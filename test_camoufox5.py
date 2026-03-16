@@ -11,6 +11,7 @@ from PIL import Image
 
 os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
 os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "1"
+os.environ["CAMOUFOX_SKIP_VERSION_CHECK"] = "1"
 
 from camoufox.async_api import AsyncCamoufox
 
@@ -378,7 +379,7 @@ async def clic_boton_detalle_tabla(page):
     if botones:
         await botones[0].click()
         print(f"✅ Clic en botón detalle (fila 1 de {len(botones)} resultados)")
-        await page.wait_for_load_state("networkidle")
+        await page.wait_for_load_state("domcontentloaded")
         await page.wait_for_timeout(2000)
     else:
         print("❌ No se encontraron botones de detalle en la tabla")
