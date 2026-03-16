@@ -1,19 +1,22 @@
+import os
+from dotenv import load_dotenv
+
+# Cargar variables de entorno desde .env
+load_dotenv()
+if os.getenv("GITHUB_TOKEN"):
+    os.environ["GH_TOKEN"] = os.getenv("GITHUB_TOKEN")
+    
 from fastapi import FastAPI, HTTPException, Query, Request, BackgroundTasks
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
-from dotenv import load_dotenv
-import os
+
 import shutil
 import traceback
 from test_camoufox5 import scrape
 
-# Cargar variables de entorno desde .env
-load_dotenv()
-if os.getenv("GITHUB_TOKEN"):
-    os.environ["GH_TOKEN"] = os.getenv("GITHUB_TOKEN")
 app = FastAPI(
     title="SUNARP Scraper API",
     description="API para scraping de SUNARP usando Camoufox",
