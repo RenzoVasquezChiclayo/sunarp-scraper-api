@@ -5,3 +5,4 @@ camoufox
 pytesseract
 Pillow
 pyngrok>=6.0.0
+playwright
