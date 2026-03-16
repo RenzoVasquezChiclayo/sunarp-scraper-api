@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 
 # Cargar variables de entorno desde .env
 load_dotenv()
+os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
 if os.getenv("GITHUB_TOKEN"):
     os.environ["GH_TOKEN"] = os.getenv("GITHUB_TOKEN")
     
