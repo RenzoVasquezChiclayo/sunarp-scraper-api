@@ -1,9 +1,5 @@
-#!/usr/bin/env bash
-set -o errexit
-
+# Instalar dependencias Python
 pip install -r requirements.txt
-export CAMOUFOX_PATH=/opt/render/.cache/camoufox
-# usar token para evitar rate limit
-export GH_TOKEN=$GH_TOKEN
-# descargar navegador camoufox
-python -m camoufox fetch
+
+# Crear carpeta para Camoufox runtime
+mkdir -p /opt/render/project/src/.camoufox_runtime
