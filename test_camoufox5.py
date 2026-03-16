@@ -917,23 +917,15 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
     sistema_os = "windows" if platform.system() == "Windows" else "linux"
     
     try:
-        async with async_playwright() as p:
-
-            browser = await p.chromium.launch(
-                headless=True,
-                args=[
-                    "--no-sandbox",
-                    "--disable-blink-features=AutomationControlled"
-                ]
-            )
-        
-            context = await browser.new_context(
-                locale="es-PE",
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
-                viewport={"width": 1366, "height": 768}
-            )
-        
-            page = await context.new_page()
+        async with AsyncCamoufox(
+            headless=True,
+            humanize=True,
+            locale=["es-PE", "es"],
+            os=sistema_os,
+            block_images=False,
+            addons=[]
+        ) as browser:
+            page = await browser.new_page()
 
             # ── Paso 1: Cargar página con retry y manejo de errores ──
             test_url = "https://sprl.sunarp.gob.pe/sprl/ingreso"  # URL ORIGINAL
@@ -1146,7 +1138,7 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
                     json.dump(json_final, f, ensure_ascii=False, indent=2)
                 
                 archivos_creados["json_final"] = nombre_json_final
-                await browser.close()
+
                 print(f"✅ JSON final guardado: {nombre_json_final}")
                 print(f"   Total de registros: {len(json_final)}")
                 print(f"   Con análisis OCR: {len(con_analisis)}")
