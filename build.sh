@@ -3,8 +3,8 @@ set -o errexit
 
 pip install -r requirements.txt
 
-# instalar navegador en el entorno virtual
-python -m playwright install chromium
+# instalar camoufox una sola vez en el build
+python -m camoufox fetch
 
 # instalar OCR
 apt-get update
