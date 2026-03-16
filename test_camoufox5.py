@@ -8,7 +8,7 @@ import platform
 import shutil
 import pytesseract
 from PIL import Image
-from playwright.async_api import async_playwright
+from camoufox.async_api import AsyncCamoufox
 
 # ── Configuración de Tesseract ──
 # Detectar sistema operativo y configurar Tesseract automáticamente
