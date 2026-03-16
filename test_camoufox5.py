@@ -8,12 +8,6 @@ import platform
 import shutil
 import pytesseract
 from PIL import Image
-path = os.environ["CAMOUFOX_PATH"]
-
-if os.path.exists(path):
-    print("Camoufox installed:", os.listdir(path))
-else:
-    print("Camoufox folder missing")
 from camoufox.async_api import AsyncCamoufox
 
 # ── Configuración de Tesseract ──
