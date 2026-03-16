@@ -1146,7 +1146,7 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
                     json.dump(json_final, f, ensure_ascii=False, indent=2)
                 
                 archivos_creados["json_final"] = nombre_json_final
-                
+                await browser.close()
                 print(f"✅ JSON final guardado: {nombre_json_final}")
                 print(f"   Total de registros: {len(json_final)}")
                 print(f"   Con análisis OCR: {len(con_analisis)}")
