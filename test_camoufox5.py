@@ -8,11 +8,6 @@ import platform
 import shutil
 import pytesseract
 from PIL import Image
-
-os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
-os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "1"
-os.environ["CAMOUFOX_SKIP_VERSION_CHECK"] = "1"
-
 from camoufox.async_api import AsyncCamoufox
 
 # ── Configuración de Tesseract ──
