@@ -1,0 +1,23 @@
+# Credenciales para SUNARP
+# Copia este contenido a un archivo llamado .env en la raíz del proyecto
+# y completa con tus credenciales reales
+
+USUARIO=STEVE70835372
+PASSWORD=ELVIS123
+
+# Configuración de Ngrok (para exponer la API públicamente)
+# Si NGROK_ENABLED=true, ngrok se iniciará automáticamente al iniciar el servidor
+NGROK_ENABLED=true
+
+# Token de autenticación de ngrok (opcional pero recomendado)
+# Obtén tu token gratis en: https://dashboard.ngrok.com/get-started/your-authtoken
+# Sin token, ngrok funcionará pero con limitaciones (solo 40 conexiones simultáneas)
+NGROK_AUTH_TOKEN=
+
+# Puerto del servidor (por defecto 5000)
+PORT=5000
+
+# Orígenes permitidos para CORS (separados por comas)
+# Usa '*' para permitir todos los orígenes (útil para desarrollo)
+# Ejemplo: CORS_ORIGINS=https://mi-frontend.vercel.app,https://otro-dominio.com
+CORS_ORIGINS=*
