@@ -4,4 +4,4 @@ python-dotenv>=1.0.0
 pytesseract
 Pillow
 pyngrok>=6.0.0
-playwright
+camoufox
