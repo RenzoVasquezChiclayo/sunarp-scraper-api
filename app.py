@@ -12,7 +12,8 @@ from test_camoufox5 import scrape
 
 # Cargar variables de entorno desde .env
 load_dotenv()
-
+if os.getenv("GITHUB_TOKEN"):
+    os.environ["GH_TOKEN"] = os.getenv("GITHUB_TOKEN")
 app = FastAPI(
     title="SUNARP Scraper API",
     description="API para scraping de SUNARP usando Camoufox",
