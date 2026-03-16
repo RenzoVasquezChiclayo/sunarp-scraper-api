@@ -8,7 +8,7 @@ import platform
 import shutil
 import pytesseract
 from PIL import Image
-from camoufox.async_api import AsyncCamoufox
+from playwright.async_api import async_playwright
 
 # ── Configuración de Tesseract ──
 # Detectar sistema operativo y configurar Tesseract automáticamente
@@ -917,16 +917,23 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
     sistema_os = "windows" if platform.system() == "Windows" else "linux"
     
     try:
-        camou = AsyncCamoufox(
-            headless=True,
-            humanize=True,
-            locale=["es-PE", "es"],
-            os=sistema_os,
-            block_images=False,
-            addons=[]
-        ) 
-        async with camou as browser:
-            page = await browser.new_page()
+        async with async_playwright() as p:
+
+            browser = await p.chromium.launch(
+                headless=True,
+                args=[
+                    "--no-sandbox",
+                    "--disable-blink-features=AutomationControlled"
+                ]
+            )
+        
+            context = await browser.new_context(
+                locale="es-PE",
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120 Safari/537.36",
+                viewport={"width": 1366, "height": 768}
+            )
+        
+            page = await context.new_page()
 
             # ── Paso 1: Cargar página con retry y manejo de errores ──
             test_url = "https://sprl.sunarp.gob.pe/sprl/ingreso"  # URL ORIGINAL
