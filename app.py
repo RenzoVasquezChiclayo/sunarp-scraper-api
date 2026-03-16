@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 # Cargar variables de entorno desde .env
 load_dotenv()
-os.environ["CAMOUFOX_PATH"] = "/opt/render/project/src/.camoufox"
+os.environ["CAMOUFOX_PATH"] = "/opt/render/.cache/camoufox"
 os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
 os.environ["CAMOUFOX_SKIP_VERSION_CHECK"] = "1"
 os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "1"
