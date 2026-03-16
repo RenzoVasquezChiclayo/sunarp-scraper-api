@@ -8,6 +8,10 @@ import platform
 import shutil
 import pytesseract
 from PIL import Image
+
+os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
+os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "1"
+
 from camoufox.async_api import AsyncCamoufox
 
 # ── Configuración de Tesseract ──
@@ -917,13 +921,15 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
     sistema_os = "windows" if platform.system() == "Windows" else "linux"
     
     try:
-        async with AsyncCamoufox(
+        camou = AsyncCamoufox(
             headless=True,
             humanize=True,
             locale=["es-PE", "es"],
             os=sistema_os,
             block_images=False,
-        ) as browser:
+            auto_download=False
+        ) 
+        async with camout as browser:
             page = await browser.new_page()
 
             # ── Paso 1: Cargar página con retry y manejo de errores ──
