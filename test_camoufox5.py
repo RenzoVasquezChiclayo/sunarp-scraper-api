@@ -927,8 +927,7 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
             humanize=True,
             locale=["es-PE", "es"],
             os=sistema_os,
-            block_images=False,
-            auto_download=False
+            block_images=False
         ) 
         async with camou as browser:
             page = await browser.new_page()
