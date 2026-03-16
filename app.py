@@ -3,10 +3,13 @@ from dotenv import load_dotenv
 
 # Cargar variables de entorno desde .env
 load_dotenv()
-os.environ["CAMOUFOX_PATH"] = "/opt/render/.cache/camoufox"
-os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "1"
-os.environ["CAMOUFOX_SKIP_VERSION_CHECK"] = "1"
-os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "1"
+# Carpeta donde se instalará Camoufox en runtime
+CAMOUFOX_RUNTIME_PATH = "/opt/render/project/src/.camoufox_runtime"
+
+os.environ["CAMOUFOX_PATH"] = CAMOUFOX_RUNTIME_PATH
+os.environ["CAMOUFOX_SKIP_VERSION_CHECK"] = "0"  # Que verifique versión
+os.environ["CAMOUFOX_NO_AUTOUPDATE"] = "0"       # Permitir update
+os.environ["CAMOUFOX_SKIP_DOWNLOAD"] = "0"       # Permitimos descargar en runtime
 if os.getenv("GITHUB_TOKEN"):
     os.environ["GH_TOKEN"] = os.getenv("GITHUB_TOKEN")
     
