@@ -929,7 +929,7 @@ async def scrape(ciudad=None, placa=None, usuario=None, password=None):
             block_images=False,
             auto_download=False
         ) 
-        async with camout as browser:
+        async with camou as browser:
             page = await browser.new_page()
 
             # ── Paso 1: Cargar página con retry y manejo de errores ──
