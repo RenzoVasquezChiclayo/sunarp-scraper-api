@@ -172,10 +172,6 @@ async def scrape_endpoint(request_body: ScrapeRequest, background_tasks: Backgro
         
         # Ejecutar el scraping de forma asíncrona
         print(f"🚀 Iniciando scraping para ciudad: {ciudad}, placa: {placa}")
-        print("HOME:", os.environ.get("HOME"))
-        print("CAMOUFOX_PATH:", os.environ.get("CAMOUFOX_PATH"))
-        print("Working dir:", os.getcwd())
-        print("Exists CAMOUFOX_PATH?", os.path.exists(os.environ.get("CAMOUFOX_PATH")))
         try:
             resultado = await scrape(
                 ciudad=ciudad,
